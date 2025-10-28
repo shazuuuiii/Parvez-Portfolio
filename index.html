@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parvez Mosharof Shazu — Photography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Photography portfolio of Parvez Mosharof Shazu">
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1320;
+      --muted:#94a3b8;
+      --accent:#ff7a59;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1100px;
+      color-scheme: dark;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071021 0%, #081426 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+    .wrap{width:100%;max-width:var(--max-width)}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:28px
+    }
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffb88c);display:flex;align-items:center;justify-content:center;font-weight:800;color:#081426;font-size:18px
+    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;color:var(--muted);font-size:13px}
+
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a.cta{background:linear-gradient(90deg,var(--accent),#ffb88c);padding:8px 12px;border-radius:10px;color:#081426}
+
+    .hero{
+      background:var(--card);padding:28px;border-radius:var(--radius);display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center;margin-bottom:28px;box-shadow:0 6px 30px rgba(2,6,23,0.6)
+    }
+    .hero h2{margin:0;font-size:28px}
+    .hero p{color:var(--muted);margin-top:10px;line-height:1.5}
+    .hero .intro-meta{margin-top:16px;color:var(--muted);font-size:14px}
+
+    .profile-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px}
+    .profile-card img{width:100%;height:220px;object-fit:cover;border-radius:10px}
+    .profile-card h3{margin:12px 0 6px}
+    .profile-card p{margin:0;color:var(--muted);font-size:14px}
+    .buttons{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn--outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn--primary{background:var(--accent);color:#081426}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+    .photo{position:relative;overflow:hidden;border-radius:12px;background:var(--glass);cursor:pointer}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+    .photo:hover img{transform:scale(1.06)}
+    .photo .meta{position:absolute;left:12px;bottom:12px;background:linear-gradient(90deg,rgba(0,0,0,0.45),rgba(0,0,0,0.18));padding:8px 10px;border-radius:10px;font-size:13px}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 300px}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      body{padding:20px}
+      .hero{grid-template-columns:1fr}
+      .profile-card img{height:180px}
+      .gallery{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:999;opacity:0;pointer-events:none;transition:opacity .2s}
+    .lightbox.open{opacity:1;pointer-events:auto}
+    .lightbox .frame{max-width:90%;max-height:90%;border-radius:12px;overflow:hidden}
+    .lightbox img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+    .close{position:absolute;top:28px;right:28px;background:rgba(0,0,0,0.5);border-radius:10px;padding:8px 10px;font-weight:700;color:#fff;cursor:pointer}
+
+    footer{color:var(--muted);text-align:center;padding:18px 0}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">P M</div>
+        <div>
+          <h1>Parvez Mosharof Shazu</h1>
+          <p>Photographer • Visual Storyteller</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h2 id="hero-title">Capturing moments. Crafting stories.</h2>
+        <p>Welcome — I'm Parvez. This is a small selection of my favorite work across portrait, street and landscape photography. Click any photo to open it full screen.</p>
+        <div class="intro-meta">Based in: Joypurhat • Available for hire: Yes</div>
+      </div>
+
+      <aside class="profile-card" aria-label="profile card">
+        <img src="images/profile.jpg" alt="Parvez Mosharof Shazu">
+        <h3>Parvez Mosharof Shazu</h3>
+        <p>Freelance Photographer — I focus on natural light and candid moments. Available for events, portraits and editorial projects.</p>
+        <div class="buttons">
+          <button class="btn btn--primary" onclick="location.href='#contact'">Hire me</button>
+          <button class="btn btn--outline" onclick="location.href='#gallery'">View gallery</button>
+        </div>
+      </aside>
+    </section>
+
+    <section id="gallery">
+      <h3 style="margin:6px 0 12px">Gallery</h3>
+      <div class="gallery">
+        <!-- Replace the src attributes below with your image file paths (e.g. images/photo1.jpg) -->
+        <figure class="photo" tabindex="0" data-full="images/photo1.jpg">
+          <img src="images/photo1.jpg" alt="Photo 1" loading="lazy">
+          <figcaption class="meta">Hatbazar</figcaption>
+        </figure>
+
+        <figure class="photo" tabindex="0" data-full="images/photo2.jpg">
+          <img src="images/photo2.jpg" alt="Photo 2" loading="lazy">
+          <figcaption class="meta">Blue Sky</figcaption>
+        </figure>
+
+        <figure class="photo" tabindex="0" data-full="images/photo3.jpg">
+          <img src="images/photo3.jpg" alt="Photo 3" loading="lazy">
+          <figcaption class="meta">Landscape — Sundarbans</figcaption>
+        </figure>
+
+        <figure class="photo" tabindex="0" data-full="images/photo4.jpg">
+          <img src="images/photo4.jpg" alt="Photo 4" loading="lazy">
+          <figcaption class="meta">Nature</figcaption>
+        </figure>
+
+        <figure class="photo" tabindex="0" data-full="images/photo5.jpg">
+          <img src="images/photo5.jpg" alt="Photo 5" loading="lazy">
+          <figcaption class="meta">Platform</figcaption>
+        </figure>
+
+        <figure class="photo" tabindex="0" data-full="images/photo6.jpg">
+          <img src="images/photo6.jpg" alt="Photo 6" loading="lazy">
+          <figcaption class="meta">Nature</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="close" aria-label="Close (Esc)" id="lb-close">✕</button>
+      <div class="frame"><img src="" alt="Expanded photo" id="lb-img"></div>
+    </div>
+
+    <section id="about" style="margin-top:24px;background:var(--card);padding:18px;border-radius:12px">
+      <h3>About</h3>
+      <p style="color:var(--muted);line-height:1.6">Hi — I'm Parvez Mosharof Shazu. I create honest, natural photography focusing on moments that feel lived-in. I shoot mostly on location and prefer to work quickly and unobtrusively. If you'd like to collaborate, let's talk.</p>
+    </section>
+
+    <section id="contact" style="margin-top:18px;background:transparent;padding:18px;">
+      <h3>Contact</h3>
+      <p style="color:var(--muted)">Email: <a href="mailto:parvezff70@gmail.com" style="color:inherit">parvezff70@gmail.com</a> • Phone: +8801869008840</p>
+      <p style="color:var(--muted)">Or use this quick link to open your email client: <a href="mailto:parvezff70@gmail.com?subject=Photo%20Inquiry" style="color:var(--accent);font-weight:700">Send a message</a></p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Parvez Mosharof Shazu — All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightbox behavior
+    const photos = document.querySelectorAll('.photo');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+
+    function openLightbox(src, alt){
+      lbImg.src = src;
+      lbImg.alt = alt || 'Photo';
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    }
+
+    photos.forEach(p => {
+      p.addEventListener('click', ()=> openLightbox(p.dataset.full, p.querySelector('img').alt));
+      p.addEventListener('keydown', (e)=>{ if(e.key === 'Enter' || e.key === ' ') openLightbox(p.dataset.full, p.querySelector('img').alt); });
+    });
+    lbClose.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
